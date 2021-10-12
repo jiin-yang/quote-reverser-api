@@ -1,8 +1,8 @@
 package main
 
 type ResponseServer struct {
-	Author	string	`json:"author"`
-	Text	[]string	`json:"text"`
+	Author	string		`json:"author"`
+	Quote	[]string	`json:"quotes"`
 }
 
 var ResponseServerData []ResponseServer

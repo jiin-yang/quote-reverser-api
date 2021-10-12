@@ -26,8 +26,17 @@ func GetDataClient() []byte {
 		DataServerFormat[responseData[i].Author] = append(DataServerFormat[responseData[i].Author], reverseString(responseData[i].Text))
 	}
 
-	DataJSONFormat, _ := json.MarshalIndent(DataServerFormat, "", "\t")
-	//fmt.Print(DataJSONFormat)
+	responseServerArray := make([]ResponseServer, 0)
+	
+	for key, value := range DataServerFormat{
+		tempResponseServerObj := ResponseServer{
+			Author: key,
+			Quote:  value,
+		}
+
+		responseServerArray = append(responseServerArray, tempResponseServerObj)
+	}
+	DataJSONFormat, _ := json.MarshalIndent(responseServerArray, "", "  ")
 
 	return DataJSONFormat
 }
